@@ -14,26 +14,21 @@ class Asiento:
         if(color == "rojo" or color == "verde" or color == "amarillo" or color == "negro" or color == "blanco"):
             self.color = color
             
-
 class Auto:
-    def __init__(self, modelo, precio, asiento, marca, motor, registro, cantidadCreados):
+    cantidadCreados=0
+    def __init__(self, modelo, precio, asientos, marca, motor, registro):
         self.modelo = modelo
         self.precio = precio
-        self.asiento = asiento
-        """if isinstance(asiento, list):
-            if len(asiento)>0:
-                for i in asiento:
-                    if not isinstance(i,Asiento):
-                        raise Exception("Uno de los elementos de asientos ")"""
+        self.asientos = asientos
         self.marca = marca 
         self.motor = motor 
-        self.registro = registro 
-        self.cantidadCreados = cantidadCreados
-    
+        self.registro = registro
+        Auto.cantidadCreados+=1
+        
     def cantidadAsientos(self):
-        if len(self.Asiento)>0:
+        if len(self.asientos)>0:
             c=0
-            for i in self.asiento:
+            for i in self.asientos:
                 if isinstance(i,Asiento):
                     c+=1
         else:
@@ -44,8 +39,8 @@ class Auto:
         if isinstance(self.motor, Motor):
             registro= self.motor.registro
             if registro==self.registro:
-                if len(self.Asiento)>0:
-                    for i in self.asiento:
+                if len(self.asientos)>0:
+                    for i in self.asientos:
                         if isinstance(i,Asiento):
                             if registro!=i.registro:
                                 registro= False       
